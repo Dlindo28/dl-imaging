@@ -1,0 +1,56 @@
+* {
+  background-color: #f2f2f2;
+}
+.Sidebar {
+  position: fixed;
+  height: 100%;
+  width: 250px;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  padding-top: 10px;
+  border-right: 1px solid #2d2d2d;
+  transition: 0.5s;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  width: 100%;
+  text-decoration: none;
+  color: #2d2d2d;
+  padding-bottom: 20px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+li:hover {
+  text-decoration: underline #2d2d2dl;
+}
+
+.closeBtn {
+  display: inline;
+  padding: 5px;
+  z-index: 1;
+  margin-left: 250px;
+  right: 0;
+  transition: 0.5s;
+  border-top: 1px solid #2d2d2d;
+  border-right: 1px solid #2d2d2d;
+  border-bottom: 1px solid #2d2d2d;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  position:relative;
+  top: 10px;
+  background-clip: border-box;
+}
+
+p:hover {
+  text-decoration: underline #2d2d2dl;
+  cursor: pointer;
+}
