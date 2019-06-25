@@ -1,61 +1,46 @@
 import React, { Component } from 'react';
-import Navigation from './Navigation';
-import uuid from 'uuid';
-
+import {
+	Modal,
+	ModalHeader,
+	ModalBody,
+	ModalFooter,
+	Button
+} from 'reactstrap';
 import '../css/Contact.css';
 
 class Contact extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            id: uuid(),
-            name: " ",
-            email: " ",
-            message: " "
-        };
-    };
+	constructor(props) {
+		super(props);
+		this.state = {
+			isOpen: this.props.isOpen
+		};
+	}
 
-    handleSubmit = (event) => {
-    	console.log(this.state);
-    	event.preventDefault();
-    };
+	handleModalToggle = () => {
+		this.setState({
+			isOpen: !this.state.isOpen
+		})
+	};
 
-  	handleChange = (event) => {
-    	let name = event.target.name;
-    	let value = event.target.value;
-
-    	this.setState({
-      		[name]: value
-    	});
-
-  	};
-
-  	render() {
-    	return (
-      		<div className="Contact">
-        		<Navigation/>
-
-        		<h1>Contact</h1>
-        		<form id="contactField" onSubmit={this.handleSubmit.bind(this)}>
-          		<div id="outerGrid">
-					<label id="item1">Name <br/>
-                		<input type="text" name="name" onChange={this.handleChange.bind(this)} required/>
-              		</label>
-
-              		<label id="item2">Email <br/>
-                		<input type="text" name="email" onChange={this.handleChange.bind(this)} required/>
-              		</label>
-
-            		<label id="item3">Message <br/>
-                		<input type="text" name="message" onChange={this.handleChange.bind(this)} required/>
-                		<input type="submit" />
-            		</label>
-
-          		</div>
-        		</form>
-      		</div>
-    	)
-  	};
-};
+	render() {
+		return (
+			<div className="Contact">
+				<Button onClick={this.handleModalToggle}>Contact</Button>
+				<Modal isOpen={this.state.isOpen} toggle={this.handleModalToggle}>
+					<ModalHeader>Contact Me</ModalHeader>
+					<ModalBody>
+						Email: <a href="mailto:dilindo28@gmail.com" className="contactLink" target="_blank">dilindo28@gmail.com</a><br />
+						Instagram: <a href="https://www.instagram.com/dl.aesthetics/" className="contactLink" target="_blank">dl.aesthetics</a><br />
+						Github: <a href="https://github.com/Dlindo28" className="contactLink" target="_blank">/Dlindo28</a><br />
+						LinkedIn: <a href="https://www.linkedin.com/in/daniel-lindo-772894142/" className="contactLink" target="_blank">/daniel-lindo-772894142</a><br />
+					</ModalBody>
+					<ModalFooter>
+						<Button onClick={this.handleModalToggle}>Close</Button>
+					</ModalFooter>
+				</Modal>
+			</div>
+		)
+	}
+}
 
 export default Contact;

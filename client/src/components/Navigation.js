@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Navbar, NavbarToggler, Nav, NavItem, NavLink, NavbarBrand, Container, Collapse } from 'reactstrap';
+import {
+	Navbar,
+	NavbarToggler,
+	Nav,
+	NavItem,
+	NavLink,
+	NavbarBrand,
+	Collapse,
+} from 'reactstrap';
+import Contact from './Contact.js';
 import '../css/Navigation.css';
 
 class Navigation extends Component {
 	constructor(props) {
 		super(props);
     	this.state = {
-    		isOpen: false
+    		toggleIsOpen: false,
     	}
   	}
 
-  	handleToggle = () => {
+  	handleNavToggle = () => {
 		this.setState({
-			isOpen: !this.state.isOpen
+			toggleIsOpen: !this.state.toggleIsOpen
 		})
 	};
 
@@ -22,21 +30,22 @@ class Navigation extends Component {
         	<div className="Navbar">
 				<Navbar color="dark" dark expand="md">
 					<NavbarBrand href="/" className="mr-auto">DL Imaging</NavbarBrand>
-					<NavbarToggler onClick={this.handleToggle}/>
-					<Collapse isOpen={this.state.isOpen} navbar>
+					<NavbarToggler onClick={this.handleNavToggle}/>
+					<Collapse isOpen={this.state.toggleIsOpen} navbar>
 						<Nav className="ml-auto" navbar>
 							<NavItem>
 								<NavLink href="/gallery">Gallery</NavLink>
 							</NavItem>
 							<NavItem>
-								<NavLink href="/contact">Contact</NavLink>
+								<NavLink href="/about">About</NavLink>
 							</NavItem>
 							<NavItem>
-								<NavLink href="/about">About</NavLink>
+								<Contact/>
 							</NavItem>
 						</Nav>
 					</Collapse>
 				</Navbar>
+
         	</div>
     	);
   	}

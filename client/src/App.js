@@ -6,7 +6,6 @@ import './App.css';
 
 import Gallery from './components/Gallery';
 import About from './components/About';
-import Contact from './components/Contact';
 
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route path="/gallery" component={Gallery}/>
-          <Route path="/contact" component={Contact}/>
           <Route path="/about" component={About}/>
         </Switch>
       </div>
