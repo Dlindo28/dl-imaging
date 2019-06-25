@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Sidebar from './Sidebar';
+import Navigation from './Navigation';
 
 class About extends Component {
   render() {
     return (
       <div>
-        <Sidebar/>
+        <Navigation/>
         About
       </div>
     )

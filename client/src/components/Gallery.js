@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Sidebar from './Sidebar';
+import Navigation from './Navigation';
 
 class Gallery extends Component {
   render() {
     return (
       <div>
-        <Sidebar/>
+        <Navigation/>
         Gallery
       </div>
     )
