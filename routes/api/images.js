@@ -8,7 +8,7 @@ const Image = require("../../models/Image");
 router.get("/", (request, response) => {
   Image.find()
     .then(image => response.json(image))
-})
+});
 
 // @route POST api/images
 // @desc Create new image
@@ -19,7 +19,7 @@ router.post("/", (request, response) => {
 
   newImage.save()
     .then(image => response.json(image));
-})
+});
 
 // @route DELETE api/images/:id
 // @desc delete image by id
@@ -30,6 +30,6 @@ router.delete("/:id", (request, response) => {
         .then(() => response.json({success: true}))
     })
     .catch(err => response.status(404).json({success: false}));
-})
+});
 
 module.exports = router;

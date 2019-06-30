@@ -1,0 +1,25 @@
+.photoClass {
+    max-width: 80%;
+    margin: auto;
+}
+
+.photo {
+    margin: 10px;
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    -webkit-transition: 0.5s ease;
+    -moz-transition: 0.5s ease;
+    -o-transition: 0.5s ease;
+    transition: 0.5s ease ;
+}
+
+.photo:hover {
+    opacity: 0.2;
+    filter: alpha(opacity = 20);
+}
+
+.Gallery h3{
+    margin: 5px;
+    text-align: center;
+}
