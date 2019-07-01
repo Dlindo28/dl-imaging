@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import  { getImages } from '../actions/imageActions';
 import PropTypes from 'prop-types';
 
 import Navigation from './Navigation';
@@ -10,11 +9,6 @@ class ImagePage extends Component {
 		super(props);
 		this.id = this.props.match.params.id;
 		this.image = this.props.image.images.filter(image => image.id === this.id)[0];
-	}
-
-	componentDidMount() {
-		console.log(this.props);
-		console.log(this.image);
 	}
 
 	render() {
@@ -35,8 +29,7 @@ const mapStateToProps = (state) => {
 };
 
 ImagePage.propTypes = {
-	getImages: PropTypes.func.isRequired,
 	image: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps, { getImages })(ImagePage);
+export default connect(mapStateToProps)(ImagePage);

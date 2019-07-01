@@ -19,6 +19,7 @@ import Navigation from './Navigation';
 class Gallery extends Component {
 	componentDidMount() {
 		document.title = "Gallery | DL Imaging";
+		this.props.getImages();
 		document.getElementsByClassName("photoClass")[0].style.display = "none";
 	}
 
@@ -51,7 +52,8 @@ const mapStateToProps = (state) => {
 };
 
 Gallery.propTypes = {
+	getImages: PropTypes.func.isRequired,
 	image: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps)(Gallery);
+export default connect(mapStateToProps, { getImages })(Gallery);
