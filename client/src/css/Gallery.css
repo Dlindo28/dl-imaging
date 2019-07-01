@@ -3,23 +3,38 @@
     margin: auto;
 }
 
-.photo {
-    margin: 2px;
-    padding: 0;
-    width: 100%;
-    max-width: 250px;
-    height: auto;
-    -webkit-transition: 0.5s ease;
-    -moz-transition: 0.5s ease;
-    -o-transition: 0.5s ease;
-    transition: 0.5s ease;
+@media only screen and (max-width: 600px) {
+    .photo {
+        margin: 2px;
+        padding: 0;
+        -webkit-transition: 0.5s ease;
+        -moz-transition: 0.5s ease;
+        -o-transition: 0.5s ease;
+        transition: 0.5s ease;
+        width: 120px;
+    }
+
+    .Gallery h3 {
+        display: none;
+    }
 }
+@media not screen and (max-width: 600px) {
+    .photo {
+        margin: 2px;
+        padding: 0;
+        height: auto;
+        -webkit-transition: 0.5s ease;
+        -moz-transition: 0.5s ease;
+        -o-transition: 0.5s ease;
+        transition: 0.5s ease;
+    }
 
-.photo:hover {
+    .photo:hover {
+        opacity: 0.9;
+    }
 
-}
-
-.Gallery h3{
-    margin: 5px;
-    text-align: center;
+    .Gallery h3{
+        margin: 5px;
+        text-align: center;
+    }
 }

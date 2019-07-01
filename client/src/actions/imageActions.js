@@ -2,17 +2,6 @@ import axios from 'axios';
 import { flickrKey } from '../config/keys';
 import { GET_IMAGES, IMAGES_LOADING } from './actions';
 
-/* export const getImages = () => dispatch => {
-	dispatch(setImagesLoading());
-	axios.get('/api/images')
-		.then(res =>
-			dispatch({
-				type: GET_IMAGES,
-				payload: res.data
-			})
-		)
-}; */
-
 export const getImages = () => dispatch => {
 	dispatch(setImagesLoading());
 	let urls = [];
@@ -31,7 +20,12 @@ export const getImages = () => dispatch => {
 				let server = photo.server;
 				let id = photo.id;
 				let secret = photo.secret;
-				urls.push(`https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`);
+				let title = photo.title;
+				urls.push({
+					id: id,
+					url: `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`,
+					title: title
+				});
 			});
 			dispatch({
 				type: GET_IMAGES,
