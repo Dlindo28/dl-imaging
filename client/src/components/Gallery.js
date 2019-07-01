@@ -9,7 +9,8 @@ import '../css/Gallery.css';
 
 import Navigation from './Navigation';
 
-/* TODO: Add Carousel on top on Gallery pg
+/* TODO: Redux State not showing images, seek fix
+*  TODO: Add Carousel on top on Gallery pg
 *  TODO: Get other Information from images
 *  TODO: Clicking image gives full size image modal
 *  TODO: Fetch incrementally from API, getImages from mongoDB?
@@ -18,7 +19,6 @@ import Navigation from './Navigation';
 class Gallery extends Component {
 	componentDidMount() {
 		document.title = "Gallery | DL Imaging";
-		this.props.getImages();
 		document.getElementsByClassName("photoClass")[0].style.display = "none";
 	}
 
@@ -51,8 +51,7 @@ const mapStateToProps = (state) => {
 };
 
 Gallery.propTypes = {
-	getImages: PropTypes.func.isRequired,
 	image: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, { getImages })(Gallery);
+export default connect(mapStateToProps)(Gallery);

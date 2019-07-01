@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import Navigation from './Navigation';
+import PropTypes from "prop-types";
+import { connect } from 'react-redux';
 
 class About extends Component {
 	componentDidMount() {
-		document.title = "About | DL Imaging"
+		document.title = "About | DL Imaging";
 	}
 
   	render() {
@@ -16,4 +18,14 @@ class About extends Component {
   	}
 }
 
-export default About;
+const mapStateToProps = (state) => {
+	return {
+		image: state.image
+	}
+};
+
+About.propTypes = {
+	image: PropTypes.object.isRequired
+};
+
+export default connect(mapStateToProps)(About);

@@ -6,16 +6,23 @@ import PropTypes from 'prop-types';
 import Navigation from './Navigation';
 
 class ImagePage extends Component {
+	constructor(props) {
+		super(props);
+		this.id = this.props.match.params.id;
+		this.image = this.props.image.images.filter(image => image.id === this.id)[0];
+	}
+
 	componentDidMount() {
 		console.log(this.props);
+		console.log(this.image);
 	}
 
 	render() {
-		const id = this.props.match.params.id;
 		return (
 			<div className="ImagePage">
 				<Navigation />
-				{ id }
+				{ this.id }
+				<img src={ this.image.url } alt="" />
 			</div>
 		)
 	}

@@ -1,11 +1,11 @@
-/* TODO: Add Carousel reactstrap component for slideshow on homepage
+/* TODO: Add loading page for when images aren't loaded/need to refresh
+   TODO: Add Carousel reactstrap component for slideshow on homepage
 *  TODO: Use Masonry library for Gallery slideshow
 *  TODO: Implement fields for emailing me, convert other social links to icons in the modal, change email to a button that links to ContactPg
 *  TODO: Connect Redux to Home Page to get images for slideshow */
 
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import  { getImages } from './actions/imageActions';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
