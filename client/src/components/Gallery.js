@@ -10,13 +10,12 @@ import '../css/Gallery.css';
 import Navigation from './Navigation';
 
 /* TODO: Add Carousel on top on Galler pg
-*  TODO: Clicking image gives full size image modal */
+*  TODO: Get other Information from images
+*  TODO: Clicking image gives full size image modal
+*  TODO: Fetch incrementally from API, getImages from mongoDB?
+*  TODO: Change images sizing to use bootstrap cols?*/
 
 class Gallery extends Component {
-	constructor(props) {
-		super(props);
-	}
-
 	componentDidMount() {
 		document.title = "Gallery | DL Imaging";
 		this.props.getImages();
@@ -30,7 +29,7 @@ class Gallery extends Component {
 				<h3>Gallery</h3>
 				<Masonry className="photoClass">
 					{ images.map(image =>
-						<a href={ image }><img src={ image } key={uuid()} className="photo"/></a>
+						<a href="#"><img src={ image } key={uuid()} className="photo" alt=""/></a>
 					)}
 				</Masonry>
       		</div>

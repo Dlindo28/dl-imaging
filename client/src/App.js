@@ -6,6 +6,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import  { getImages } from './actions/imageActions';
 import store from './store';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -31,7 +32,7 @@ function App() {
 }
 
 const Home = () => (
-    <div className="Home" style={{ background: "url('./images/test1.jpg')" }}>
+    <div className="Home">
 
         <Link to="/gallery" id="enterLink">Enter</Link>
     </div>

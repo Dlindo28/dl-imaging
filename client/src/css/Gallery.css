@@ -1,22 +1,22 @@
 .photoClass {
-    max-width: 80%;
+    max-width: 90%;
     margin: auto;
 }
 
 .photo {
-    margin: 10px;
+    margin: 2px;
+    padding: 0;
     width: 100%;
     max-width: 250px;
     height: auto;
     -webkit-transition: 0.5s ease;
     -moz-transition: 0.5s ease;
     -o-transition: 0.5s ease;
-    transition: 0.5s ease ;
+    transition: 0.5s ease;
 }
 
 .photo:hover {
-    opacity: 0.2;
-    filter: alpha(opacity = 20);
+
 }
 
 .Gallery h3{
