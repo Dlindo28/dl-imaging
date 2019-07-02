@@ -10,8 +10,8 @@ import {
 	DropdownItem
 } from 'reactstrap';
 import '../css/Gallery.css';
-import Navigation from './Navigation';
 import GalleryImage from './GalleryImage';
+import ContactLinks from './ContactLinks';
 
 /* TODO: Redux State not showing images, seek fix
 *  TODO: Add Carousel on top on Gallery pg
@@ -35,11 +35,11 @@ class Gallery extends Component {
 		const { images } = this.props.image;
     	return (
       		<div className="Gallery">
-        		<Navigation/>
 				<h3>Gallery</h3>
+				<ContactLinks />
 				<Masonry className="photoClass" onImagesLoaded={this.handleImagesLoaded}>
 					{ images.map(image =>
-						<GalleryImage id={ image.id } url={ image.url }/>
+						<GalleryImage id={ image.id } url={ image.url } key={ image.id }/>
 					)}
 				</Masonry>
       		</div>

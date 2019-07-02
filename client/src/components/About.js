@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navigation from './Navigation';
 import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 
@@ -11,7 +10,6 @@ class About extends Component {
   	render() {
     	return (
       		<div>
-        		<Navigation/>
         		About
       		</div>
 		)

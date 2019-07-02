@@ -1,0 +1,16 @@
+.contactItem {
+    color: black;
+    margin-right: 10px;
+}
+
+.contactItem:hover {
+    color: black
+}
+
+.ContactLinks ul {
+    list-style-type: none;
+}
+
+.ContactLinks ul li {
+    display: inline;
+}

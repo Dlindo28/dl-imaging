@@ -14,7 +14,6 @@ class ImagePage extends Component {
 	render() {
 		return (
 			<div className="ImagePage">
-				<Navigation />
 				{ this.id }
 				<img src={ this.image.url } alt="" />
 			</div>

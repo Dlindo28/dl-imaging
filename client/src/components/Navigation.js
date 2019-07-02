@@ -8,7 +8,7 @@ import {
 	NavbarBrand,
 	Collapse,
 } from 'reactstrap';
-import Contact from './Contact.js';
+import ContactLinks from './ContactLinks.js';
 import '../css/Navigation.css';
 
 class Navigation extends Component {
@@ -40,7 +40,7 @@ class Navigation extends Component {
 								<NavLink href="/about">About</NavLink>
 							</NavItem>
 							<NavItem>
-								<Contact/>
+								<ContactLinks/>
 							</NavItem>
 						</Nav>
 					</Collapse>
