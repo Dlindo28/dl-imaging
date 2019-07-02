@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import  { getImages } from '../actions/imageActions';
 import Masonry from 'react-masonry-component';
 import PropTypes from 'prop-types';
-
+import {
+	Dropdown,
+	DropdownToggle,
+	DropdownMenu,
+	DropdownItem
+} from 'reactstrap';
 import '../css/Gallery.css';
-
 import Navigation from './Navigation';
+import GalleryImage from './GalleryImage';
 
 /* TODO: Redux State not showing images, seek fix
 *  TODO: Add Carousel on top on Gallery pg
@@ -35,9 +39,7 @@ class Gallery extends Component {
 				<h3>Gallery</h3>
 				<Masonry className="photoClass" onImagesLoaded={this.handleImagesLoaded}>
 					{ images.map(image =>
-						<Link to={ "/image/" + image.id } key={ image.url }>
-							<img src={ image.url } className="photo" alt="" width="250px" />
-						</Link>
+						<GalleryImage id={ image.id } url={ image.url }/>
 					)}
 				</Masonry>
       		</div>
