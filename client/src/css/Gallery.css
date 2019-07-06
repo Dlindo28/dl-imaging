@@ -1,8 +1,39 @@
-.photoClass {
+.photoClass, .options-links {
     max-width: 90%;
     margin: auto;
 }
 
+/* Larger screens */
+@media not screen and (max-width: 600px) {
+    .photo {
+        margin: 2px;
+        padding: 0;
+        height: auto;
+        -webkit-transition: 0.5s ease;
+        -moz-transition: 0.5s ease;
+        -o-transition: 0.5s ease;
+        transition: 0.5s ease;
+    }
+
+    .photo:hover {
+        -webkit-transform: scale(0.95);
+        -moz-transform: scale(0.95);
+        -ms-transform: scale(0.95);
+        -o-transform: scale(0.95);
+        transform: scale(0.95);
+    }
+
+    .Gallery h3{
+        margin: 5px;
+        text-align: center;
+    }
+
+    .options-links {
+        text-align: right;
+    }
+}
+
+/* Phone and smaller screens */
 @media only screen and (max-width: 600px) {
     .photo {
         margin: 2px;
@@ -16,26 +47,5 @@
 
     .Gallery h3 {
         display: none;
-    }
-}
-@media not screen and (max-width: 600px) {
-    .photo {
-        margin: 2px;
-        padding: 0;
-        height: auto;
-        -webkit-transition: 0.5s ease;
-        -moz-transition: 0.5s ease;
-        -o-transition: 0.5s ease;
-        transition: 0.5s ease;
-    }
-
-    .photo:hover {
-        opacity: 0.9;
-        width: 230px;
-    }
-
-    .Gallery h3{
-        margin: 5px;
-        text-align: center;
     }
 }

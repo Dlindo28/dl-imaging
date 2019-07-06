@@ -1,10 +1,14 @@
 .contactItem {
     color: black;
     margin-right: 10px;
+    -webkit-transition: 0.35s ease;
+    -moz-transition: 0.35s ease;
+    -o-transition: 0.35s ease;
+    transition: 0.35s ease;
 }
 
 .contactItem:hover {
-    color: black
+    color: maroon;
 }
 
 .ContactLinks ul {
@@ -13,4 +17,9 @@
 
 .ContactLinks ul li {
     display: inline;
+
+}
+
+.ContactLinks {
+    height: 35px;
 }

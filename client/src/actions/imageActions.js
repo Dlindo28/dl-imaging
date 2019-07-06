@@ -4,7 +4,8 @@ import { GET_IMAGES, IMAGES_LOADING } from './actions';
 
 export const getImages = () => dispatch => {
 	dispatch(setImagesLoading());
-	let urls = [];
+	let payload = [];
+
 	axios.get("https://www.flickr.com/services/rest/?method=flickr.photosets.getPhotos", {
 		params: {
 			api_key: flickrKey,
@@ -16,20 +17,30 @@ export const getImages = () => dispatch => {
 	})
 		.then(res => {
 			res.data.photoset.photo.forEach(photo => {
-				let farm = photo.farm;
-				let server = photo.server;
-				let id = photo.id;
-				let secret = photo.secret;
-				let title = photo.title;
-				urls.push({
-					id: id,
-					url: `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`,
-					title: title
-				});
-			});
-			dispatch({
-				type: GET_IMAGES,
-				payload: urls
+				axios.get("https://www.flickr.com/services/rest/?method=flickr.photos.getInfo", {
+					params: {
+						api_key: flickrKey,
+						photo_id: photo.id,
+						format: "json",
+						nojsoncallback: 1
+					}
+				})
+					.then(res => {
+						let tags = [];
+						res.data.photo.tags.tag.forEach(tag => tags.push(tag.raw));
+						payload.push({
+							id: photo.id,
+							url: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`,
+							title: photo.title,
+							description: res.data.photo.description._content,
+							tags,
+							flickrUrl: res.data.photo.urls.url[0]._content
+						});
+						dispatch({
+							type: GET_IMAGES,
+							payload: payload
+						});
+					});
 			});
 		})
 };

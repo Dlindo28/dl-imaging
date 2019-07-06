@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 class GalleryImage extends Component {
 	render() {
 		return (
-			<Link to={ "/image/" + this.props.id } key={ this.props.url }>
-				<img src={ this.props.url } className="photo" alt="" width="250px" />
-			</Link>
+			<a href={ this.props.image.flickrUrl } rel="noopener noreferrer" target="_blank">
+				<img src={ this.props.image.url } className="photo" alt="" width="250px" onClick={ this.props.onClick }/>
+			</a>
 		)
 
 	}
