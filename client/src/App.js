@@ -13,7 +13,7 @@ import './App.css';
 import Gallery from './components/Gallery';
 import About from './components/About';
 import PropTypes from "prop-types";
-import {getImages} from "./actions/imageActions";
+import { getImages } from "./actions/imageActions";
 
 class App extends Component {
 	componentDidMount() {

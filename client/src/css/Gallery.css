@@ -1,6 +1,14 @@
-.photoClass, .options-links {
+.Gallery, .photoClass, .logo {
     max-width: 90%;
     margin: auto;
+}
+
+#links-filter {
+    list-style-type: none;
+}
+
+#links-filter li {
+    display: inline-block;
 }
 
 /* Larger screens */
@@ -23,13 +31,20 @@
         transform: scale(0.95);
     }
 
-    .Gallery h3{
+    .Gallery h3 {
         margin: 5px;
         text-align: center;
     }
 
-    .options-links {
-        text-align: right;
+    .logo {
+        width: 100px;
+        margin: auto;
+        display: block;
+        padding-top: 10px;
+    }
+
+    .filterDropdown {
+        margin-right: 50px;
     }
 }
 
@@ -42,10 +57,26 @@
         -moz-transition: 0.5s ease;
         -o-transition: 0.5s ease;
         transition: 0.5s ease;
-        width: 120px;
+        width: 100px;
     }
 
     .Gallery h3 {
         display: none;
+    }
+
+
+    .logo {
+        width: 50px;
+        margin: auto;
+        display: block;
+        padding-top: 10px;
+    }
+
+    #links-filter {
+        margin-bottom: 0;
+    }
+
+    .filterDropdown {
+        margin-right: 50px;
     }
 }

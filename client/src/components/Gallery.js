@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Masonry from 'react-masonry-component';
 import PropTypes from 'prop-types';
 import {
@@ -30,7 +31,6 @@ class Gallery extends Component {
 	componentDidMount() {
 		document.title = "Gallery | DL Imaging";
 		document.getElementsByClassName("Gallery")[0].style.display = "none";
-		console.log("mounted");
 		this.filterImages();
 	}
 
@@ -68,27 +68,38 @@ class Gallery extends Component {
     	return (
       		<div className="Gallery">
 
-				<h3>Gallery</h3>
+				<Link to="/">
+					<img className="logo" src={ require("../images/logo.png") } alt=""/>
+				</Link>
 
-				<div className="options-links">
-					<ContactLinks />
-				</div>
+				<ul id="links-filter">
+					<li>
+						<Dropdown className="filterDropdown" isOpen={ this.state.dropdownOpen } toggle={ this.dropdownToggle }>
+							<DropdownToggle caret color="light">
+								Filter
+							</DropdownToggle>
+							<DropdownMenu>
+								<DropdownItem onClick={ () => this.toggleFilter(null) }>None</DropdownItem>
+								<DropdownItem divider />
+								<DropdownItem onClick={ () => this.toggleFilter("portrait") }>Portrait</DropdownItem>
+								<DropdownItem onClick={ () => this.toggleFilter("landscape") }>Landscape</DropdownItem>
+								<DropdownItem onClick={ () => this.toggleFilter("cityscape") }>Cityscape</DropdownItem>
+								<DropdownItem onClick={ () => this.toggleFilter("street") }>Street</DropdownItem>
+							</DropdownMenu>
+						</Dropdown>
+					</li>
 
-				<Dropdown className="filterDropdown" isOpen={ this.state.dropdownOpen } toggle={ this.dropdownToggle }>
-					<DropdownToggle caret>
-						Filter
-					</DropdownToggle>
-					<DropdownMenu>
-						<DropdownItem onClick={ () => this.toggleFilter(null) }>None</DropdownItem>
-						<DropdownItem divider />
-						<DropdownItem onClick={ () => this.toggleFilter("portrait") }>Portrait</DropdownItem>
-						<DropdownItem onClick={ () => this.toggleFilter("landscape") }>Landscape</DropdownItem>
-						<DropdownItem onClick={ () => this.toggleFilter("cityscape") }>Cityscape</DropdownItem>
-						<DropdownItem onClick={ () => this.toggleFilter("street") }>Street</DropdownItem>
-					</DropdownMenu>
-				</Dropdown>
+					<li>
+						<div className="options-links">
+							<ContactLinks />
+						</div>
+					</li>
+				</ul>
 
-				<Masonry className="photoClass" onImagesLoaded={ this.handleImagesLoaded }>
+				<Masonry className="photoClass" onImagesLoaded={ this.handleImagesLoaded }  options={{
+						horizontalOrder: true,
+						stagger: 20
+					}}>
 					{ this.state.renderedImages.map(image =>
 						<GalleryImage image={ image } key={ image.id }/>
 					)}
