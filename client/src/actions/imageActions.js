@@ -1,6 +1,7 @@
 import axios from 'axios';
-import { flickrKey } from '../config/keys';
 import { GET_IMAGES, IMAGES_LOADING } from './actions';
+
+const flickrKey = process.env.flickrKey;
 
 export const getImages = () => dispatch => {
 	dispatch(setImagesLoading());
