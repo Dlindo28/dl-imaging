@@ -8,7 +8,7 @@ const images = require("./routes/api/images");
 
 app.use(bodyParser.json());
 
-const db = process.env.mongoURI;
+const db = process.env.mongoURI || require("./config/keys").mongoURI;
 mongoose
   .connect(db)
   .then(() => {
@@ -17,8 +17,6 @@ mongoose
   .catch(err => {
     console.log(err)
   });
-
-app.use("/api/images", images);
 
 const port = process.env.PORT || 5000;
 
