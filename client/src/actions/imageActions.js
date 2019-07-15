@@ -8,6 +8,7 @@ if (!flickrKey){
 	console.log("not config var");
 }
 */
+console.log(flickrKey);
 export const getImages = () => dispatch => {
 	dispatch(setImagesLoading());
 	let payload = [];

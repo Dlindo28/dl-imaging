@@ -10,6 +10,8 @@ const images = require("./routes/api/images");
 app.use(bodyParser.json());
 
 const db = process.env.mongoURI || require("./config/keys").mongoURI;
+console.log(db);
+
 mongoose
   .connect(db)
   .then(() => {
