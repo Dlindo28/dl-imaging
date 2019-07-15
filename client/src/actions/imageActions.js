@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { GET_IMAGES, IMAGES_LOADING } from './actions';
 
-let flickrKey = process.env.FLICKR_KEY;
+let flickrKey = process.env.REACT_APP_FLICKR_KEY;
 /*
 if (!flickrKey){
 	flickrKey = require("../config/keys").flickrKey;
