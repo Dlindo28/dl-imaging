@@ -1,5 +1,5 @@
 .contactItem {
-    color: black;
+    color: #f9f9f9;
     margin-right: 10px;
     -webkit-transition: 0.35s ease;
     -moz-transition: 0.35s ease;
@@ -9,6 +9,7 @@
 
 .contactItem:hover {
     color: lightgray;
+    cursor: pointer;
 }
 
 .ContactLinks ul {
@@ -17,9 +18,4 @@
 
 .ContactLinks ul li {
     display: inline;
-
-}
-
-.ContactLinks {
-    height: 35px;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faAddressCard } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import '../css/ContactLinks.css';
 

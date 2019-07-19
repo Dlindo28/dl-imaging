@@ -16,6 +16,7 @@ import {
 	DropdownItem
 } from 'reactstrap';
 import '../css/Gallery.css';
+import Navigation from './Navigation';
 import GalleryImage from './GalleryImage';
 import ContactLinks from './ContactLinks';
 
@@ -68,9 +69,9 @@ class Gallery extends Component {
     	return (
       		<div className="Gallery">
 
-				<Link to="/">
-					<img className="logo" src={ require("../images/logo.png") } alt=""/>
-				</Link>
+				<Navigation/>
+
+				<h3>My Gallery</h3>
 
 				<ul id="links-filter">
 					<li>
@@ -87,12 +88,6 @@ class Gallery extends Component {
 								<DropdownItem onClick={ () => this.toggleFilter("street") }>Street</DropdownItem>
 							</DropdownMenu>
 						</Dropdown>
-					</li>
-
-					<li>
-						<div className="options-links">
-							<ContactLinks />
-						</div>
 					</li>
 				</ul>
 

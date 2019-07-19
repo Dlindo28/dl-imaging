@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
-import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import Navigation from './Navigation';
+import '../css/About.css';
 
 class About extends Component {
 	componentDidMount() {
@@ -9,21 +12,20 @@ class About extends Component {
 
   	render() {
     	return (
-      		<div>
-        		About
+      		<div className="About">
+
+				<Navigation/>
+
+				<div className="infoContainer">
+					<img src={ require("../images/test1.jpg") } alt="" id="aboutImg" />
+					<p id="aboutPara">
+						This is my About
+					</p>
+				</div>
+
       		</div>
 		)
   	}
 }
 
-const mapStateToProps = (state) => {
-	return {
-		image: state.image
-	}
-};
-
-About.propTypes = {
-	image: PropTypes.object.isRequired
-};
-
-export default connect(mapStateToProps)(About);
+export default About;

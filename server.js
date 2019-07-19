@@ -11,7 +11,6 @@ const images = require("./routes/api/images");
 app.use(bodyParser.json());
 
 const db = process.env.REACT_APP_MONGO_URI || require("./config/keys").mongoURI;
-console.log(db);
 
 mongoose
   .connect(db)
