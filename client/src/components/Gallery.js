@@ -1,12 +1,10 @@
-/* TODO: Redux State not showing images, seek fix
-*  TODO: Add Carousel on top on Gallery pg
-*  TODO: Clicking image gives full size image modal
+/* TODO: Add Carousel on top on Gallery pg
+*  TODO: Clicking image gives full size image modal (maybe)
 *  TODO: Fetch incrementally from API, getImages from mongoDB?*/
 
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Masonry from 'react-masonry-component';
 import PropTypes from 'prop-types';
 import {
@@ -18,7 +16,6 @@ import {
 import '../css/Gallery.css';
 import Navigation from './Navigation';
 import GalleryImage from './GalleryImage';
-import ContactLinks from './ContactLinks';
 
 class Gallery extends Component {
 	constructor(props) {
@@ -73,23 +70,24 @@ class Gallery extends Component {
 
 				<h3>My Gallery</h3>
 
-				<ul id="links-filter">
-					<li>
-						<Dropdown className="filterDropdown" isOpen={ this.state.dropdownOpen } toggle={ this.dropdownToggle }>
-							<DropdownToggle caret color="light">
-								Filter
-							</DropdownToggle>
-							<DropdownMenu>
-								<DropdownItem onClick={ () => this.toggleFilter(null) }>None</DropdownItem>
-								<DropdownItem divider />
-								<DropdownItem onClick={ () => this.toggleFilter("portrait") }>Portrait</DropdownItem>
-								<DropdownItem onClick={ () => this.toggleFilter("landscape") }>Landscape</DropdownItem>
-								<DropdownItem onClick={ () => this.toggleFilter("cityscape") }>Cityscape</DropdownItem>
-								<DropdownItem onClick={ () => this.toggleFilter("street") }>Street</DropdownItem>
-							</DropdownMenu>
-						</Dropdown>
-					</li>
-				</ul>
+				<Dropdown style={{
+					width: "90%",
+					margin: "auto"
+				}} isOpen={ this.state.dropdownOpen } toggle={ this.dropdownToggle }>
+
+					<DropdownToggle caret color="light">
+						Filter
+					</DropdownToggle>
+					<DropdownMenu>
+						<DropdownItem onClick={ () => this.toggleFilter(null) }>None</DropdownItem>
+						<DropdownItem divider />
+						<DropdownItem onClick={ () => this.toggleFilter("portrait") }>Portrait</DropdownItem>
+						<DropdownItem onClick={ () => this.toggleFilter("landscape") }>Landscape</DropdownItem>
+						<DropdownItem onClick={ () => this.toggleFilter("cityscape") }>Cityscape</DropdownItem>
+						<DropdownItem onClick={ () => this.toggleFilter("street") }>Street</DropdownItem>
+					</DropdownMenu>
+
+				</Dropdown>
 
 				<Masonry className="photoClass" onImagesLoaded={ this.handleImagesLoaded }  options={{
 						horizontalOrder: true,

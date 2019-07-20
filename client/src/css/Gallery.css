@@ -2,15 +2,6 @@
     max-width: 90%;
     margin: auto;
 }
-
-#links-filter {
-    list-style-type: none;
-}
-
-#links-filter li {
-    display: inline-block;
-}
-
 /* Larger screens */
 @media not screen and (max-width: 600px) {
     .photo {
@@ -35,10 +26,6 @@
         margin: 5px;
         text-align: center;
     }
-
-    .filterDropdown {
-        margin-right: 50px;
-    }
 }
 
 /* Phone and smaller screens */
@@ -55,13 +42,5 @@
 
     .Gallery h3 {
         display: none;
-    }
-
-    #links-filter {
-        margin-bottom: 0;
-    }
-
-    .filterDropdown {
-        margin-right: 50px;
     }
 }
