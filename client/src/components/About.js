@@ -19,7 +19,8 @@ class About extends Component {
 				<div className="infoContainer">
 					<img src={ require("../images/test1.jpg") } alt="" id="aboutImg" />
 					<p id="aboutPara">
-						This is my About
+						Hey! I'm Daniel Lindo, a Computer Science student at Santa Clara University and a photographer by hobby.
+						Prints are not available as of yet, but will be soon.
 					</p>
 				</div>
 
