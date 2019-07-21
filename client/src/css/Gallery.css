@@ -26,6 +26,13 @@
         margin: 5px;
         text-align: center;
     }
+
+    .Spinner {
+      margin: auto;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+    }
 }
 
 /* Phone and smaller screens */

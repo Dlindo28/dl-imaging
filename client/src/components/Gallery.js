@@ -11,7 +11,8 @@ import {
 	Dropdown,
 	DropdownToggle,
 	DropdownMenu,
-	DropdownItem
+	DropdownItem,
+	Spinner
 } from 'reactstrap';
 import '../css/Gallery.css';
 import Navigation from './Navigation';
@@ -28,12 +29,14 @@ class Gallery extends Component {
 	}
 	componentDidMount() {
 		document.title = "Gallery | DL Imaging";
-		document.getElementsByClassName("Gallery")[0].style.display = "none";
+		document.getElementsByClassName("GalleryContainer")[0].style.display = "none";
+		document.getElementsByClassName("Spinner")[0].style.display = "block";
 		this.filterImages();
 	}
 
 	handleImagesLoaded = () => {
-		document.getElementsByClassName("Gallery")[0].style.display = "block";
+		document.getElementsByClassName("Spinner")[0].style.display = "none";
+		document.getElementsByClassName("GalleryContainer")[0].style.display = "block";
 	};
 
 	filterImages = () => {
@@ -68,35 +71,41 @@ class Gallery extends Component {
 
 				<Navigation/>
 
-				<h3>My Gallery</h3>
+				<Spinner className="Spinner" color="dark" />
 
-				<Dropdown style={{
-					width: "90%",
-					margin: "auto"
-				}} isOpen={ this.state.dropdownOpen } toggle={ this.dropdownToggle }>
+				<div className="GalleryContainer">
 
-					<DropdownToggle caret color="light">
-						Filter
-					</DropdownToggle>
-					<DropdownMenu>
-						<DropdownItem onClick={ () => this.toggleFilter(null) }>None</DropdownItem>
-						<DropdownItem divider />
-						<DropdownItem onClick={ () => this.toggleFilter("portrait") }>Portrait</DropdownItem>
-						<DropdownItem onClick={ () => this.toggleFilter("landscape") }>Landscape</DropdownItem>
-						<DropdownItem onClick={ () => this.toggleFilter("cityscape") }>Cityscape</DropdownItem>
-						<DropdownItem onClick={ () => this.toggleFilter("street") }>Street</DropdownItem>
-					</DropdownMenu>
+					<h3>My Gallery</h3>
 
-				</Dropdown>
+					<Dropdown style={{
+						width: "90%",
+						margin: "auto"
+					}} isOpen={ this.state.dropdownOpen } toggle={ this.dropdownToggle }>
 
-				<Masonry className="photoClass" onImagesLoaded={ this.handleImagesLoaded }  options={{
-						horizontalOrder: true,
-						stagger: 20
-					}}>
-					{ this.state.renderedImages.map(image =>
-						<GalleryImage image={ image } key={ image.id }/>
-					)}
-				</Masonry>
+						<DropdownToggle caret color="light">
+							Filter
+						</DropdownToggle>
+						<DropdownMenu>
+							<DropdownItem onClick={ () => this.toggleFilter(null) }>None</DropdownItem>
+							<DropdownItem divider />
+							<DropdownItem onClick={ () => this.toggleFilter("portrait") }>Portrait</DropdownItem>
+							<DropdownItem onClick={ () => this.toggleFilter("landscape") }>Landscape</DropdownItem>
+							<DropdownItem onClick={ () => this.toggleFilter("cityscape") }>Cityscape</DropdownItem>
+							<DropdownItem onClick={ () => this.toggleFilter("street") }>Street</DropdownItem>
+						</DropdownMenu>
+
+					</Dropdown>
+
+					<Masonry className="photoClass" onImagesLoaded={ this.handleImagesLoaded }  options={{
+							horizontalOrder: true,
+							stagger: 20
+						}}>
+						{ this.state.renderedImages.map(image =>
+							<GalleryImage image={ image } key={ image.id }/>
+						)}
+					</Masonry>
+
+				</div>
 
       		</div>
     	)
