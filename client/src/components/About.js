@@ -1,32 +1,38 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Link } from 'react-router-dom';
 
-import Navigation from './Navigation';
-import '../css/About.css';
+import "../css/About.css";
 
 class About extends Component {
-	componentDidMount() {
-		document.title = "About | DL Imaging";
-	}
+  componentDidMount() {
+    document.title = "DL Imaging | About";
+  }
 
-  	render() {
-    	return (
-      		<div className="About">
+  render() {
+    return (
+      <div className="row">
+        <div className="col m12 l12">
+          <div className="card small red lighten-2 horizontal">
+            <div className="card-image">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGAM8IZiKs3BXUdjs2fvjAyGbBvNXjF0N_EFOabDXmWag9ZpNd"
+                id="aboutImg"
+                alt="About Me"
+              />
+            </div>
 
-				<Navigation/>
-
-				<div className="infoContainer">
-					<img src={ require("../images/test1.jpg") } alt="" id="aboutImg" />
-					<p id="aboutPara">
-						Hey! I'm Daniel Lindo, a Computer Science student at Santa Clara University and a photographer by hobby.
-						Prints are not available as of yet, but will be soon.
-					</p>
-				</div>
-
-      		</div>
-		)
-  	}
+            <div className="card-content white-text">
+              <span className="card-title">Who Am I</span>
+              <p>
+                My name is Daniel Lindo. I'm also a photographer based in Santa
+                Clara, CA
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default About;

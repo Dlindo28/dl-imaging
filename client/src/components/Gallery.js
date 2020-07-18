@@ -1,5 +1,5 @@
-/* TODO: Add Carousel on top on Gallery pg
-*  TODO: Clicking image gives full size image modal (maybe)
+/* TODO: Make images bigger a bit
+*  TODO: Clicking image gives full size image modal (or page)
 *  TODO: Fetch incrementally from API, getImages from mongoDB?*/
 
 
@@ -7,39 +7,44 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Masonry from 'react-masonry-component';
 import PropTypes from 'prop-types';
-import {
-	Dropdown,
-	DropdownToggle,
-	DropdownMenu,
-	DropdownItem,
-	Spinner
-} from 'reactstrap';
 import '../css/Gallery.css';
 import Navigation from './Navigation';
 import GalleryImage from './GalleryImage';
+import M from 'materialize-css';
 
 class Gallery extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			filter: null,
 			renderedImages: this.props.image.images,
-			dropdownOpen: false
+			dropdownOpen: false,
+			filter: this.props.filter
 		};
+
+		this.handleImagesLoaded = this.handleImagesLoaded.bind(this);
+		this.filterImages = this.filterImages.bind(this);
+		this.toggleFilter = this.toggleFilter.bind(this);
 	}
+
 	componentDidMount() {
 		document.title = "Gallery | DL Imaging";
 		document.getElementsByClassName("GalleryContainer")[0].style.display = "none";
-		document.getElementsByClassName("Spinner")[0].style.display = "block";
 		this.filterImages();
+
+		let filterElems = document.querySelectorAll('.dropdown-trigger');
+		M.Dropdown.init(filterElems, {
+			inDuration: 300,
+			outDuration: 225,
+			hover: true,
+			coverTrigger: false
+			});
 	}
 
-	handleImagesLoaded = () => {
-		document.getElementsByClassName("Spinner")[0].style.display = "none";
+	handleImagesLoaded() {
 		document.getElementsByClassName("GalleryContainer")[0].style.display = "block";
 	};
 
-	filterImages = () => {
+	filterImages() {
 		if (this.state.filter) {
 			this.setState({
 				renderedImages: this.props.image.images.filter(image => image.tags.indexOf(this.state.filter) !== -1)
@@ -49,17 +54,12 @@ class Gallery extends Component {
 				renderedImages: this.props.image.images
 			});
 		}
-	};
+	}
 
-	dropdownToggle = () => {
+	toggleFilter(e) {
+		console.log(e.target.name);
 		this.setState({
-			dropdownOpen: !this.state.dropdownOpen
-		})
-	};
-
-	toggleFilter = (filter) => {
-		this.setState({
-			filter: filter
+			filter: e.target.name
 		}, function() {
 			this.filterImages();
 		});
@@ -71,34 +71,24 @@ class Gallery extends Component {
 
 				<Navigation/>
 
-				<Spinner className="Spinner" color="dark" />
-
 				<div className="GalleryContainer">
+					<h2 className="center">Gallery</h2>
 
-					<h3>My Gallery</h3>
-
-					<Dropdown style={{
-						width: "90%",
-						margin: "auto"
-					}} isOpen={ this.state.dropdownOpen } toggle={ this.dropdownToggle }>
-
-						<DropdownToggle caret color="light">
-							Filter
-						</DropdownToggle>
-						<DropdownMenu>
-							<DropdownItem onClick={ () => this.toggleFilter(null) }>None</DropdownItem>
-							<DropdownItem divider />
-							<DropdownItem onClick={ () => this.toggleFilter("portrait") }>Portrait</DropdownItem>
-							<DropdownItem onClick={ () => this.toggleFilter("landscape") }>Landscape</DropdownItem>
-							<DropdownItem onClick={ () => this.toggleFilter("cityscape") }>Cityscape</DropdownItem>
-							<DropdownItem onClick={ () => this.toggleFilter("street") }>Street</DropdownItem>
-						</DropdownMenu>
-
-					</Dropdown>
+					<div className="filter center">
+						<ul id="filterDropdown" className="dropdown-content">
+							<li className="white-text"><a onClick={ this.toggleFilter } name={ null }>None</a></li>
+							<li className="divider"></li>
+							<li className="white-text"><a onClick={ this.toggleFilter } name="street">Street</a></li>
+							<li className="white-text"><a onClick={ this.toggleFilter } name="portrait">Portrait</a></li>
+							<li className="white-text"><a onClick={ this.toggleFilter } name="product">Product</a></li>
+						</ul>
+						<a className="btn dropdown-trigger" data-target="filterDropdown">Filter</a>
+					</div>
 
 					<Masonry className="photoClass" onImagesLoaded={ this.handleImagesLoaded }  options={{
-							horizontalOrder: true,
-							stagger: 20
+							horizontalOrder: false,
+							stagger: 70,
+							fitWidth: true
 						}}>
 						{ this.state.renderedImages.map(image =>
 							<GalleryImage image={ image } key={ image.id }/>

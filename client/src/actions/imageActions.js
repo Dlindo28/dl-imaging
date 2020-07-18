@@ -28,6 +28,7 @@ export const getImages = () => dispatch => {
 				})
 					.then(res => {
 						let tags = [];
+						console.log(res.data);
 						res.data.photo.tags.tag.forEach(tag => tags.push(tag.raw));
 						payload.push({
 							id: photo.id,

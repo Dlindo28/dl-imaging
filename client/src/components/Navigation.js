@@ -1,46 +1,88 @@
-import React, { Component } from 'react';
-import {
-	Navbar,
-	Nav,
-	NavItem,
-	NavLink,
-	NavbarBrand,
-} from 'reactstrap';
+import React, { Component } from "react";
+import M from "materialize-css";
 
-import ContactLinks from './ContactLinks.js';
-import '../css/Navigation.css';
+import "../css/Navigation.css";
 
 class Navigation extends Component {
-	render() {
-        return (
-        	<div className="Navbar">
+  constructor(props) {
+    super(props);
+    this.state = {
+      homeState: "navItem",
+      galleryState: "navItem",
+    };
+  }
 
-				<Navbar color="dark" dark expand="md">
+  componentWillMount() {
+    let pages = {
+      homeState: "home",
+      galleryState: "gallery",
+    };
+    let p;
+    for (p in pages) {
+      let newState = {};
+      newState[p] = "active navItem";
+      if (this.props.page === pages[p]) {
+        this.setState(newState);
+      }
+    }
+  }
 
-					<NavbarBrand href="/" className="mr-auto">
-						<img className="logo" src={ require("../images/logoLight.png") } alt=""/>
-					</NavbarBrand>
+  componentDidMount() {
+    let elems = document.querySelectorAll(".dropdown-trigger");
+    M.Dropdown.init(elems, {
+      inDuration: 300,
+      outDuration: 225,
+      hover: true,
+      coverTrigger: false,
+    });
+  }
 
-					<Nav className="ml-auto" style={{
-						display: "flex",
-						alignItems: "center"
-					}} navbar>
-						<NavItem>
-							<NavLink href="/gallery" style={{color: "#f9f9f9"}} >Gallery</NavLink>
-						</NavItem>
-						<NavItem>
-							<NavLink href="/about" style={{color: "#f9f9f9"}} >About</NavLink>
-						</NavItem>
-						<NavItem>
-							<ContactLinks/>
-						</NavItem>
-					</Nav>
-
-				</Navbar>
-
-        	</div>
-    	);
-  	}
+  render() {
+    return (
+      <div className="navbar">
+        <ul id="shopDropdown" className="dropdown-content">
+          <li className="white-text">
+            <a href="/shop">Prints</a>
+          </li>
+          <li className="divider"></li>
+          <li className="white-text">
+            <a
+              href="https://www.blurb.com/user/Dlindo28"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Books
+            </a>
+          </li>
+        </ul>
+        <nav className="red lighten-2">
+          <div className="nav-wrapper">
+            <ul id="nav-desktop" className="left hide-on-small navList">
+              <li className={this.state.homeState}>
+                <a href="/" className="white-text">
+                  Home
+                </a>
+              </li>
+              <li className={this.state.galleryState}>
+                <a href="/gallery" className="white-text">
+                  Gallery
+                </a>
+              </li>
+              <li className="navItem">
+                <a
+                  className="dropdown-trigger white-text"
+                  data-target="shopDropdown"
+                >
+                  Shop<i className="material-icons right">arrow_drop_down</i>
+                </a>
+              </li>
+            </ul>
+            <a className="brand-logo right scriptFont">DL Imaging</a>
+          </div>
+        </nav>
+      </div>
+    );
+  }
 }
 
 export default Navigation;
