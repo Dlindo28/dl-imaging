@@ -1,61 +1,57 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { connect } from "react-redux";
-import M from "materialize-css";
+
 import "./App.css";
+
+import Shop from "./screens/Shop";
+import Gallery from "./screens/Gallery";
 
 import About from "./components/About";
 import Contact from "./components/Contact";
-import Gallery from "./components/Gallery";
 import Navigation from "./components/Navigation";
-import Shop from "./components/Shop";
 import Footer from "./components/Footer";
-import PropTypes from "prop-types";
-import { getImages } from "./actions/imageActions";
 
 // TODO: Change Horizontal Cards to Vertical on Small Screens -> maybe use .hide-on-desktop class
 // TODO: For Home Cards, swap single image to Slideshows
 
-class App extends Component {
-  componentDidMount() {
+const App = () => {
+  useEffect(() => {
     document.title = "DL Imaging";
     //this.props.getImages();
     //checks for new images
-  }
+  });
 
-  render() {
-    return (
-      <Router>
-        <div className="App">
-          <Switch>
-            <Route exact path="/" render={Home} />
-            <Route
-              exact
-              path="/gallery"
-              render={(props) => <Gallery {...props} filter={null} />}
-            />
-            <Route
-              exact
-              path="/gallery/street"
-              render={(props) => <Gallery {...props} filter={"street"} />}
-            />
-            <Route
-              exact
-              path="/gallery/portrait"
-              render={(props) => <Gallery {...props} filter={"portrait"} />}
-            />
-            <Route
-              exact
-              path="/gallery/product"
-              render={(props) => <Gallery {...props} filter={"product"} />}
-            />
-            <Route exact path="/shop" render={() => <Shop />} />
-          </Switch>
-        </div>
-      </Router>
-    );
-  }
-}
+  return (
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" render={Home} />
+          <Route
+            exact
+            path="/gallery"
+            render={(props) => <Gallery {...props} filter={null} />}
+          />
+          <Route
+            exact
+            path="/gallery/street"
+            render={(props) => <Gallery {...props} filter={"street"} />}
+          />
+          <Route
+            exact
+            path="/gallery/portrait"
+            render={(props) => <Gallery {...props} filter={"portrait"} />}
+          />
+          <Route
+            exact
+            path="/gallery/product"
+            render={(props) => <Gallery {...props} filter={"product"} />}
+          />
+          <Route exact path="/shop" render={() => <Shop />} />
+        </Switch>
+      </div>
+    </Router>
+  );
+};
 
 const Home = () => (
   <div className="Home grey lighten-3">
@@ -164,15 +160,4 @@ const Home = () => (
   </div>
 );
 
-const mapStateToProps = (state) => {
-  return {
-    image: state.image,
-  };
-};
-
-App.propTypes = {
-  getImages: PropTypes.func.isRequired,
-  image: PropTypes.object.isRequired,
-};
-
-export default connect(mapStateToProps, { getImages })(App);
+export default App;

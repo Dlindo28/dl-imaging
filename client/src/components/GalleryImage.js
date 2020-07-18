@@ -1,14 +1,11 @@
-import React, { Component } from 'react';
+import React from "react";
 
-class GalleryImage extends Component {
-	render() {
-		return (
-			<a href={ this.props.image.flickrUrl } rel="noopener noreferrer" target="_blank">
-				<img src={ this.props.image.url } className="photo hoverable" alt="" width="300px" onClick={ this.props.onClick }/>
-			</a>
-		)
-
-	}
-}
+const GalleryImage = ({ image }) => {
+  return (
+    <a href={image.flickrUrl} rel="noopener noreferrer" target="_blank">
+      <img src={image.url} className="photo hoverable" alt="" width="300px" />
+    </a>
+  );
+};
 
 export default GalleryImage;
