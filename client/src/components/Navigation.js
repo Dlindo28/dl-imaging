@@ -43,17 +43,17 @@ const Navigation = () => {
       <nav className="red lighten-2">
         <div className="nav-wrapper">
           <ul id="nav-desktop" className="left hide-on-small navList">
-            <li className={active == "Home" ? "active navItem" : "navItem"}>
+            <li className={active === "Home" ? "active navItem" : "navItem"}>
               <a href="/" className="white-text">
                 Home
               </a>
             </li>
-            <li className={active == "Gallery" ? "active navItem" : "navItem"}>
+            <li className={active === "Gallery" ? "active navItem" : "navItem"}>
               <a href="/gallery" className="white-text">
                 Gallery
               </a>
             </li>
-            <li className={active == "Shop" ? "active navItem" : "navItem"}>
+            <li className={active === "Shop" ? "active navItem" : "navItem"}>
               <a
                 className="dropdown-trigger white-text"
                 data-target="shopDropdown"

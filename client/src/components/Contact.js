@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
   const [contactInfo, setContactInfo] = useState({
@@ -8,16 +9,30 @@ const Contact = () => {
     message: null,
   });
 
-  const handleChange = (event) => {
+  const handleChange = (e) => {
     setContactInfo({
       ...contactInfo,
-      [event.target.name]: event.target.value,
+      [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     console.log(contactInfo);
-    event.preventDefault();
+    let params = {
+      from_name: `${contactInfo.firstName} ${contactInfo.lastName}`,
+      message_html: contactInfo.message,
+      email: contactInfo.email,
+    };
+
+    emailjs
+      .send(
+        "dl_imaging_gmail",
+        "template_vQTCDjZc",
+        params,
+        "user_CvUuC3nIyuOIs7vSfdcEf"
+      )
+      .then((res) => console.log(res));
   };
 
   return (
