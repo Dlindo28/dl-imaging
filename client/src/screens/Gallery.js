@@ -3,16 +3,21 @@
  *  TODO: Fetch incrementally from API, getImages from mongoDB?*/
 
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Masonry from "react-masonry-component";
+import M from "materialize-css";
+
+import { setPage } from "../actions/pageActions";
+
 import "../css/Gallery.css";
 
 import Navigation from "../components/Navigation";
 import GalleryImage from "../components/GalleryImage";
-import M from "materialize-css";
 
 const Gallery = ({}) => {
   const image = useSelector((store) => store.image);
+  const dispatch = useDispatch();
+
   const [renderedImages, setRenderedImages] = useState(image.images);
   const [dropdown, setDropdown] = useState(false);
   const [filter, setFilter] = useState(null);
@@ -38,6 +43,7 @@ const Gallery = ({}) => {
 
   useEffect(() => {
     document.title = "Gallery | DL Imaging";
+    dispatch(setPage("Gallery"));
     document.getElementsByClassName("GalleryContainer")[0].style.display =
       "none";
 

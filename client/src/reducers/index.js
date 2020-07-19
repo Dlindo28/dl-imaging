@@ -1,6 +1,8 @@
-import { combineReducers } from 'redux';
-import imageReducer from './imageReducer';
+import { combineReducers } from "redux";
+import imageReducer from "./imageReducer";
+import pageReducer from "./pageReducer";
 
 export default combineReducers({
-	image: imageReducer
+  image: imageReducer,
+  page: pageReducer,
 });

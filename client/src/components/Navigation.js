@@ -1,27 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import M from "materialize-css";
 
 import "../css/Navigation.css";
 
-const Navigation = ({ page }) => {
+const Navigation = () => {
   const [homeState, setHomeState] = useState("navItem");
   const [galleryState, setGalleryState] = useState("navItem");
   const [shopState, setShopState] = useState("navItem");
 
+  const active = useSelector((store) => store.page.activePage);
+
   useEffect(() => {
-    if (page === "home") {
-      setHomeState("active navItem");
-      setGalleryState("navItem");
-      setShopState("navItem");
-    } else if (page == "gallery") {
-      setHomeState("navItem");
-      setGalleryState("active navItem");
-      setShopState("navItem");
-    } else if (page == "shop") {
-      setHomeState("navItem");
-      setGalleryState("navItem");
-      setShopState("active navItem");
-    }
+    console.log(active);
+
     let elems = document.querySelectorAll(".dropdown-trigger");
     M.Dropdown.init(elems, {
       inDuration: 300,
@@ -29,7 +21,7 @@ const Navigation = ({ page }) => {
       hover: true,
       coverTrigger: false,
     });
-  }, [page]);
+  }, [active]);
 
   return (
     <div className="navbar">
@@ -51,17 +43,17 @@ const Navigation = ({ page }) => {
       <nav className="red lighten-2">
         <div className="nav-wrapper">
           <ul id="nav-desktop" className="left hide-on-small navList">
-            <li className={homeState}>
+            <li className={active == "Home" ? "active navItem" : "navItem"}>
               <a href="/" className="white-text">
                 Home
               </a>
             </li>
-            <li className={galleryState}>
+            <li className={active == "Gallery" ? "active navItem" : "navItem"}>
               <a href="/gallery" className="white-text">
                 Gallery
               </a>
             </li>
-            <li className={shopState}>
+            <li className={active == "Shop" ? "active navItem" : "navItem"}>
               <a
                 className="dropdown-trigger white-text"
                 data-target="shopDropdown"
