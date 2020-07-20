@@ -37,14 +37,6 @@ const Contact = () => {
       .then((res) => console.log(res));
   };
 
-  const recaptchaCallback = () => {
-    console.log("recaptchaCallback");
-  };
-
-  const verifyCallback = (res) => {
-    console.log(res);
-  };
-
   return (
     <div>
       <div className="col s12 m8 l8">
