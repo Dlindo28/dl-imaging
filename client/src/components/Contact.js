@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
+import * as Recaptcha from "react-recaptcha";
+
+import { recaptchaSiteKey } from "../config/keys";
 
 const Contact = () => {
   const [contactInfo, setContactInfo] = useState({
@@ -18,7 +21,6 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(contactInfo);
     let params = {
       from_name: `${contactInfo.firstName} ${contactInfo.lastName}`,
       message_html: contactInfo.message,
@@ -35,73 +37,84 @@ const Contact = () => {
       .then((res) => console.log(res));
   };
 
-  return (
-    <div className="col s12 m8 l8">
-      <div className="card large">
-        <div className="card-content">
-          <span className="card-title">Contact Me</span>
-          <form className="col s12" onSubmit={handleSubmit}>
-            <div className="row">
-              <div className="input-field col s12 m6 l6">
-                <input
-                  className="validate"
-                  id="firstName"
-                  type="text"
-                  name="firstName"
-                  onChange={handleChange}
-                ></input>
-                <label htmlFor="firstName">First Name</label>
-              </div>
-              <div className="input-field col s12 m6 l6">
-                <input
-                  className="validate"
-                  id="lastName"
-                  type="text"
-                  name="lastName"
-                  onChange={handleChange}
-                ></input>
-                <label htmlFor="lastName">Last Name</label>
-              </div>
-            </div>
-            <div className="row">
-              <div className="input-field col s12">
-                <input
-                  className="validate"
-                  id="email"
-                  type="email"
-                  name="email"
-                  onChange={handleChange}
-                  required
-                ></input>
-                <label htmlFor="email">Email</label>
-              </div>
-            </div>
-            <div className="row">
-              <div className="input-field col s12">
-                <textarea
-                  className="materialize-textarea"
-                  id="contactText"
-                  type="text"
-                  name="message"
-                  value={contactInfo.message}
-                  onChange={handleChange}
-                  required
-                ></textarea>
-                <label htmlFor="contactText">Enter your message.</label>
-              </div>
-            </div>
+  const recaptchaCallback = () => {
+    console.log("recaptchaCallback");
+  };
 
-            <div className="card-action">
-              <button
-                type="submit"
-                className="btn-flat black-text grey lighten-3"
-                name="submit"
-                value="submit"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
+  const verifyCallback = (res) => {
+    console.log(res);
+  };
+
+  return (
+    <div>
+      <div className="col s12 m8 l8">
+        <div className="card large">
+          <div className="card-content">
+            <span className="card-title">Contact Me</span>
+            <form className="col s12" onSubmit={handleSubmit}>
+              <div className="row">
+                <div className="input-field col s12 m6 l6">
+                  <input
+                    className="validate"
+                    id="firstName"
+                    type="text"
+                    name="firstName"
+                    onChange={handleChange}
+                  ></input>
+                  <label htmlFor="firstName">First Name</label>
+                </div>
+                <div className="input-field col s12 m6 l6">
+                  <input
+                    className="validate"
+                    id="lastName"
+                    type="text"
+                    name="lastName"
+                    onChange={handleChange}
+                  ></input>
+                  <label htmlFor="lastName">Last Name</label>
+                </div>
+              </div>
+              <div className="row">
+                <div className="input-field col s12">
+                  <input
+                    className="validate"
+                    id="email"
+                    type="email"
+                    name="email"
+                    onChange={handleChange}
+                    required
+                  ></input>
+                  <label htmlFor="email">Email</label>
+                </div>
+              </div>
+              <div className="row">
+                <div className="input-field col s12">
+                  <textarea
+                    className="materialize-textarea"
+                    id="contactText"
+                    type="text"
+                    name="message"
+                    value={contactInfo.message}
+                    onChange={handleChange}
+                    required
+                  ></textarea>
+                  <label htmlFor="contactText">Enter your message.</label>
+                  <Recaptcha sitekey={recaptchaSiteKey} />
+                </div>
+              </div>
+
+              <div className="card-action">
+                <button
+                  type="submit"
+                  className="btn-flat black-text grey lighten-3"
+                  name="submit"
+                  value="submit"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
