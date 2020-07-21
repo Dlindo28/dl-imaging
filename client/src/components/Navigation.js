@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import M from "materialize-css";
 
 import "../css/Navigation.css";
 
+import { setFilter } from "../actions/filterActions";
+
 const Navigation = () => {
   const active = useSelector((store) => store.page.activePage);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     console.log(active);
@@ -45,7 +48,11 @@ const Navigation = () => {
               </a>
             </li>
             <li className={active === "Gallery" ? "active navItem" : "navItem"}>
-              <a href="/gallery" className="white-text">
+              <a
+                onClick={() => dispatch(setFilter(null))}
+                href="/gallery"
+                className="white-text"
+              >
                 Gallery
               </a>
             </li>
