@@ -7,6 +7,8 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 
 import { setPage } from "../actions/pageActions";
+import { setFilter } from "../actions/filterActions";
+import { set } from "mongoose";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -41,7 +43,8 @@ const Home = () => {
             </div>
             <div className="card-action">
               <a
-                href="/gallery/street"
+                onClick={() => dispatch(setFilter("street"))}
+                href="/gallery"
                 className="btn-flat right black-text grey lighten-3"
               >
                 Street
@@ -63,7 +66,8 @@ const Home = () => {
             </div>
             <div className="card-action">
               <a
-                href="/gallery/portrait"
+                onClick={() => dispatch(setFilter("portrait"))}
+                href="/gallery"
                 className="btn-flat right black-text grey lighten-3"
               >
                 Portraits
@@ -88,7 +92,8 @@ const Home = () => {
             </div>
             <div className="card-action">
               <a
-                href="/gallery/product"
+                onClick={() => dispatch(setFilter("product"))}
+                href="/gallery"
                 className="btn-flat right black-text grey lighten-3"
               >
                 Product

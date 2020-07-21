@@ -8,6 +8,7 @@ import Masonry from "react-masonry-component";
 import M from "materialize-css";
 
 import { setPage } from "../actions/pageActions";
+import { setFilter } from "../actions/filterActions";
 
 import "../css/Gallery.css";
 
@@ -16,10 +17,11 @@ import GalleryImage from "../components/GalleryImage";
 
 const Gallery = () => {
   const image = useSelector((store) => store.image);
+  const filter = useSelector((store) => store.filter.filter);
+
   const dispatch = useDispatch();
 
   const [renderedImages, setRenderedImages] = useState(image.images);
-  const [filter, setFilter] = useState(null);
 
   const handleImagesLoaded = () => {
     document.getElementsByClassName("GalleryContainer")[0].style.display =
@@ -37,7 +39,7 @@ const Gallery = () => {
   };
 
   const toggleFilter = (e) => {
-    setFilter(e.target.name);
+    dispatch(setFilter(e.target.name));
   };
 
   useEffect(() => {
@@ -68,23 +70,35 @@ const Gallery = () => {
 
         <div className="filter center">
           <ul id="filterDropdown" className="dropdown-content">
-            <li className="white-text">
+            <li className={!filter ? "white-text active" : "white-text"}>
               <a onClick={toggleFilter} name={null}>
                 None
               </a>
             </li>
             <li className="divider"></li>
-            <li className="white-text">
+            <li
+              className={
+                filter === "street" ? "white-text active" : "white-text"
+              }
+            >
               <a onClick={toggleFilter} name="street">
                 Street
               </a>
             </li>
-            <li className="white-text">
+            <li
+              className={
+                filter === "portrait" ? "white-text active" : "white-text"
+              }
+            >
               <a onClick={toggleFilter} name="portrait">
                 Portrait
               </a>
             </li>
-            <li className="white-text">
+            <li
+              className={
+                filter === "product" ? "white-text active" : "white-text"
+              }
+            >
               <a onClick={toggleFilter} name="product">
                 Product
               </a>
