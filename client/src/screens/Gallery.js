@@ -14,12 +14,11 @@ import "../css/Gallery.css";
 import Navigation from "../components/Navigation";
 import GalleryImage from "../components/GalleryImage";
 
-const Gallery = ({}) => {
+const Gallery = () => {
   const image = useSelector((store) => store.image);
   const dispatch = useDispatch();
 
   const [renderedImages, setRenderedImages] = useState(image.images);
-  const [dropdown, setDropdown] = useState(false);
   const [filter, setFilter] = useState(null);
 
   const handleImagesLoaded = () => {
@@ -47,8 +46,6 @@ const Gallery = ({}) => {
     document.getElementsByClassName("GalleryContainer")[0].style.display =
       "none";
 
-    filterImages();
-
     let filterElems = document.querySelectorAll(".dropdown-trigger");
     M.Dropdown.init(filterElems, {
       inDuration: 300,
@@ -56,6 +53,10 @@ const Gallery = ({}) => {
       hover: true,
       coverTrigger: false,
     });
+  }, []);
+
+  useEffect(() => {
+    filterImages();
   }, [filter]);
 
   return (

@@ -27,7 +27,10 @@ const Home = () => {
         <div className="col m4 l4">
           <div className="card large">
             <div className="card-image">
-              <img src="https://live.staticflickr.com/4565/38937430371_f237316ee4_b.jpg"></img>
+              <img
+                src="https://live.staticflickr.com/4565/38937430371_f237316ee4_b.jpg"
+                alt="Street"
+              ></img>
             </div>
             <div className="card-content">
               <span className="card-title">Street</span>
@@ -49,7 +52,10 @@ const Home = () => {
         <div className="col m4 l4">
           <div className="card large">
             <div className="card-image">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGAM8IZiKs3BXUdjs2fvjAyGbBvNXjF0N_EFOabDXmWag9ZpNd"></img>
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGAM8IZiKs3BXUdjs2fvjAyGbBvNXjF0N_EFOabDXmWag9ZpNd"
+                alt="Portraits"
+              ></img>
             </div>
             <div className="card-content">
               <span className="card-title">Portraits</span>
@@ -68,7 +74,10 @@ const Home = () => {
         <div className="col m4 l4">
           <div className="card large">
             <div className="card-image">
-              <img src="https://i2.pickpik.com/photos/48/319/813/versace-perfume-product-bakeh-preview.jpg"></img>
+              <img
+                src="https://i2.pickpik.com/photos/48/319/813/versace-perfume-product-bakeh-preview.jpg"
+                alt="Product"
+              ></img>
             </div>
             <div className="card-content">
               <span className="card-title">Product</span>
@@ -95,7 +104,10 @@ const Home = () => {
         <div className="col s12 m4 l4">
           <div className="card large">
             <div className="card-image">
-              <img src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"></img>
+              <img
+                src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                alt="Books/Prints"
+              ></img>
             </div>
             <div className="card-content">
               <span className="card-title">Books/Prints</span>

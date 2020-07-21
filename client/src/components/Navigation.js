@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import M from "materialize-css";
 
 import "../css/Navigation.css";
 
 const Navigation = () => {
-  const [homeState, setHomeState] = useState("navItem");
-  const [galleryState, setGalleryState] = useState("navItem");
-  const [shopState, setShopState] = useState("navItem");
-
   const active = useSelector((store) => store.page.activePage);
 
   useEffect(() => {
@@ -62,7 +58,9 @@ const Navigation = () => {
               </a>
             </li>
           </ul>
-          <a className="brand-logo right scriptFont">DL Imaging</a>
+          <a className="brand-logo right scriptFont" href="/">
+            DL Imaging
+          </a>
         </div>
       </nav>
     </div>
