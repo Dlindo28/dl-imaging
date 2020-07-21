@@ -1,2 +1,5 @@
 config/
 /client/src/config
+
+.env
+/client/.env

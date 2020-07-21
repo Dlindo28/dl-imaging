@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import * as Recaptcha from "react-recaptcha";
 
-import { recaptchaSiteKey } from "../config/keys";
+const sitekey = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
 
 const Contact = () => {
   const [contactInfo, setContactInfo] = useState({
@@ -91,9 +91,7 @@ const Contact = () => {
                     required
                   ></textarea>
                   <label htmlFor="contactText">Enter your message.</label>
-                  <Recaptcha
-                    sitekey={process.env.RECAPTCHA_SITE_KEY || recaptchaSiteKey}
-                  />
+                  <Recaptcha sitekey={sitekey} />
                 </div>
               </div>
 

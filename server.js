@@ -10,6 +10,7 @@ const images = require("./routes/api/images");
 
 app.use(bodyParser.json());
 
+console.log("PROCESS ENV: " + process.env.REACT_APP_RECAPTCHA_SITE_KEY);
 const db = process.env.REACT_APP_MONGO_URI || require("./config/keys").mongoURI;
 
 mongoose
