@@ -117,9 +117,8 @@ const Home = () => {
             <div className="card-content">
               <span className="card-title">Books/Prints</span>
               <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text...
+                Shop through my catalog of photobooks on Blurb, or selected
+                prints available.
               </p>
             </div>
             <div className="card-action">

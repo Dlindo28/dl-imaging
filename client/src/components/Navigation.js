@@ -65,7 +65,10 @@ const Navigation = () => {
               </a>
             </li>
           </ul>
-          <a className="brand-logo right scriptFont" href="/">
+          <a
+            className="brand-logo right scriptFont hide-on-small-only"
+            href="/"
+          >
             DL Imaging
           </a>
         </div>
