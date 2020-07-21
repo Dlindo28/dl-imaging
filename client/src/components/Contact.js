@@ -91,7 +91,9 @@ const Contact = () => {
                     required
                   ></textarea>
                   <label htmlFor="contactText">Enter your message.</label>
-                  <Recaptcha sitekey={recaptchaSiteKey} />
+                  <Recaptcha
+                    sitekey={process.env.RECAPTCHA_SITE_KEY || recaptchaSiteKey}
+                  />
                 </div>
               </div>
 
