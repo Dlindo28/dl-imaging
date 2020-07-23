@@ -8,7 +8,6 @@ import Footer from "../components/Footer";
 
 import { setPage } from "../actions/pageActions";
 import { setFilter } from "../actions/filterActions";
-import { set } from "mongoose";
 
 const Home = () => {
   const dispatch = useDispatch();
