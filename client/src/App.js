@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import axios from "axios";
 
 import "./App.css";
 
@@ -13,8 +14,6 @@ import Gallery from "./screens/Gallery";
 const App = () => {
   useEffect(() => {
     document.title = "DL Imaging";
-    //this.props.getImages();
-    //checks for new images
   });
 
   return (

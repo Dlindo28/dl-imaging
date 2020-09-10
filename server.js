@@ -1,8 +1,10 @@
+// Loads environment variables from .env
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path");
-require("dotenv").config();
 
 const app = express();
 
@@ -21,7 +23,11 @@ mongoose
     console.log(err);
   });
 
-app.use("/api/images", images);
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/server.html");
+});
+
+app.use("/images", images);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

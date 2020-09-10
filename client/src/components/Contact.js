@@ -9,7 +9,7 @@ const Contact = () => {
     firstName: null,
     lastName: null,
     email: null,
-    message: null,
+    message: "",
   });
 
   const handleChange = (e) => {
