@@ -16,15 +16,18 @@ const About = () => {
             />
           </div>
 
-          <div className="card-content white-text col m12 l12">
-            <span className="card-title">Who Am I</span>
-            <p>
-              My name is Daniel. I'm a college student studying Computer Science
-              at Santa Clara University. I'm also a hobbyist photographer that
-              enjoys studying the art of photography. This site is not only a
-              tool for expressing my passion for photography, but also a way to
-              show my passion for programming and web development.
-            </p>
+          <div className="col l10">
+            <div className="card-content white-text">
+              <span className="card-title">Who Am I</span>
+              <p>
+                My name is Daniel. I'm a college student studying Computer
+                Science at Santa Clara University. I'm also a hobbyist
+                photographer that enjoys studying the art of photography. This
+                site is not only a tool for expressing my passion for
+                photography, but also a way to show my passion for programming
+                and web development.
+              </p>
+            </div>
           </div>
         </div>
       </div>
