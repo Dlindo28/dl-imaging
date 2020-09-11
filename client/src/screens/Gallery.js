@@ -4,6 +4,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 import Masonry from "react-masonry-component";
 import M from "materialize-css";
 
@@ -14,14 +15,15 @@ import "../css/Gallery.css";
 
 import Navigation from "../components/Navigation";
 import GalleryImage from "../components/GalleryImage";
+import Footer from "../components/Footer";
 
 const Gallery = () => {
-  const image = useSelector((store) => store.image);
+  const [images, setImages] = useState([]);
   const filter = useSelector((store) => store.filter.filter);
 
   const dispatch = useDispatch();
 
-  const [renderedImages, setRenderedImages] = useState(image.images);
+  const [renderedImages, setRenderedImages] = useState([]);
 
   const handleImagesLoaded = () => {
     document.getElementsByClassName("GalleryContainer")[0].style.display =
@@ -29,12 +31,15 @@ const Gallery = () => {
   };
 
   const filterImages = () => {
+    if (images.length == 0) {
+      return;
+    }
     if (filter) {
       setRenderedImages(
-        image.images.filter((img) => img.tags.indexOf(filter) !== -1)
+        images.filter((img) => img.tags.indexOf(filter) !== -1)
       );
     } else {
-      setRenderedImages(image.images);
+      setRenderedImages(images);
     }
   };
 
@@ -43,10 +48,17 @@ const Gallery = () => {
   };
 
   useEffect(() => {
+    axios.get("/images").then((res) => {
+      setImages(res.data);
+      setRenderedImages(res.data);
+    });
+  }, []);
+
+  useEffect(() => {
     document.title = "Gallery | DL Imaging";
-    dispatch(setPage("Gallery"));
     document.getElementsByClassName("GalleryContainer")[0].style.display =
       "none";
+    dispatch(setPage("Gallery"));
 
     let filterElems = document.querySelectorAll(".dropdown-trigger");
     M.Dropdown.init(filterElems, {
@@ -114,7 +126,7 @@ const Gallery = () => {
           onImagesLoaded={handleImagesLoaded}
           options={{
             horizontalOrder: false,
-            stagger: 70,
+            stagger: 10,
             fitWidth: true,
           }}
         >
@@ -123,6 +135,7 @@ const Gallery = () => {
           ))}
         </Masonry>
       </div>
+      <Footer />
     </div>
   );
 };

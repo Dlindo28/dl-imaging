@@ -11,8 +11,6 @@ const Navigation = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(active);
-
     let elems = document.querySelectorAll(".dropdown-trigger");
     M.Dropdown.init(elems, {
       inDuration: 300,
