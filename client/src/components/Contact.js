@@ -3,6 +3,7 @@ import emailjs from "emailjs-com";
 import * as Recaptcha from "react-recaptcha";
 
 const sitekey = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
+console.log(sitekey);
 
 const Contact = () => {
   const [contactInfo, setContactInfo] = useState({
