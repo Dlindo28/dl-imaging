@@ -1,5 +1,5 @@
 // Loads environment variables from .env
-require("dotenv").config();
+require("dotenv").config({ path: `${__dirname}/.env` });
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -12,7 +12,7 @@ const images = require("./routes/api/images");
 
 app.use(bodyParser.json());
 
-const db = process.env.REACT_APP_MONGO_URI || require("./config/keys").mongoURI;
+const db = process.env.REACT_APP_MONGO_URI;
 
 mongoose
   .connect(db, { useNewUrlParser: true })

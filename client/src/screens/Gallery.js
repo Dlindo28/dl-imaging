@@ -31,7 +31,7 @@ const Gallery = () => {
   };
 
   const filterImages = () => {
-    if (images.length == 0) {
+    if (images.length === 0) {
       return;
     }
     if (filter) {
