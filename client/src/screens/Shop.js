@@ -15,9 +15,19 @@ const Shop = () => {
   return (
     <div className="shop">
       <Navigation />
-      <h3 style={{ color: "black" }}>
-        Shop is currently down for maintenance.
-      </h3>
+      <div className="row">
+        <div className="col m4 l4">
+          <div className="card large">
+            <div className="card-content">
+              <span className="card-title">Alert</span>
+              <p>
+                I am not currently taking requests for the shop due to being on
+                hiatus.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

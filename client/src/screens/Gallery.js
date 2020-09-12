@@ -48,7 +48,7 @@ const Gallery = () => {
   };
 
   useEffect(() => {
-    axios.get("/images").then((res) => {
+    axios.get("/api/images").then((res) => {
       setImages(res.data);
       setRenderedImages(res.data);
     });
